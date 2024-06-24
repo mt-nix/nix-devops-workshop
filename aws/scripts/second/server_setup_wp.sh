@@ -2,7 +2,7 @@
 rm /etc/nginx/sites-available/default
 curl -L -o /etc/nginx/sites-available/default "https://raw.githubusercontent.com/mt-nix/nix-devops-workshop/main/aws/files/second/default"
 apt install python-software-properties -y
-add-apt-repository ppa:ondrej/php -y
+add-apt-repository -y ppa:ondrej/php
 apt install php8.3 php8.3-fpm -y
 apt install php-mysql -y
 mkdir /root/Downloads
