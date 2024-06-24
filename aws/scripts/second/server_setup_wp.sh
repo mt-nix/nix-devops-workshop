@@ -9,8 +9,6 @@ mkdir /root/Downloads
 wget -P /root/Downloads https://wordpress.org/wordpress-6.5.3.tar.gz
 cd /root/Downloads
 tar -xf wordpress-6.5.3.tar.gz
-rm -rf /var/www/html
-mkdir /var/www/html
 cp /root/Downloads/wordpress/* /var/www/html -r
 chown www-data:www-data /var/www/html -R
 systemctl restart nginx
