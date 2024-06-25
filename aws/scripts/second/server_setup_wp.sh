@@ -1,4 +1,9 @@
 #!/bin/bash
+mkdir /cert
+cd /cert
+openssl genrsa -out server.key 2048
+openssl req -new -key server.key -out server.csr -subj "/CN=localhost"
+openssl x509 -req -days 365 -in server.csr -signkey server.key -out server.crt
 rm /etc/nginx/sites-available/default
 curl -L -o /etc/nginx/sites-available/default "https://raw.githubusercontent.com/mt-nix/nix-devops-workshop/main/aws/files/second/default"
 apt install python-software-properties -y
