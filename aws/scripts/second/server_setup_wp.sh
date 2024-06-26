@@ -41,6 +41,8 @@ second_server_setup() {
 }
 
 mkdir /cert
+mkdir -p /var/www/html
+chown ubuntu:ubuntu /var/www/html
 cd /cert
 openssl genrsa -out server.key 2048
 openssl req -new -key server.key -out server.csr -subj "/CN=localhost"
