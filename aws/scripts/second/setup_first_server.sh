@@ -15,11 +15,10 @@ read -sp "Please enter your DB admin password: " dbpassword
 echo
 read -p "Please enter your Wordpress admin username: " wpusername
 read -sp "Please enter your Wordpress admin password: " wppassword
+echo
 
-# Check if the database exists
 DB_EXISTS=$(mysql -h $dbendpoint -u $dbusername -p$dbpassword -e "SHOW DATABASES LIKE 'wordpress';" | grep "wordpress")
 
-# If the database does not exist, create it
 if [ -z "$DB_EXISTS" ]; then
     mysql -h $dbendpoint -u $dbusername -p$dbpassword -e "CREATE DATABASE wordpress;"
     echo "Database 'wordpress' created successfully."
@@ -28,5 +27,6 @@ else
 fi
 
 cd /var/www/html
+
 wp config create --dbhost="$dbendpoint" --dbname="wordpress" --dbuser="$dbusername" --dbpass="$dbpassword"
 wp core install --url="$domain" --title="Test Wordpress Page" --admin_user="$wpusername" --admin_password="$wppassword" --admin_email="admin@example.com"
