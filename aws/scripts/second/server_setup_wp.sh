@@ -19,10 +19,7 @@ first_server_setup() {
     read -p "Please enter your Wordpress admin username: " wpusername
     read -sp "Please enter your Wordpress admin password: " wppassword
     echo
-
-    su www-data
-    cd /var/www/html
-    wp core config --dbname="$dbendpoint" --dbuser="$dbusername" --dbpass="$dbpassword"
+    
     sudo -u ubuntu -i -- bash -c 'cd /var/www/html && \
         wp core config --dbname="$dbendpoint" --dbuser="$dbusername" --dbpass="$dbpassword" && \
         wp core install --url="$domain" --title="Test Wordpress Page" --admin_user="$wpusername" --admin_password="$wppassword" --admin_email="admin@example.com"'
@@ -58,7 +55,7 @@ curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.pha
 chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
 
-sudo -u ubuntu -i -- wp core download --path=/var/www/html
+sudo -u ubuntu -i -- bash -c 'cd /var/www/html && wp core download'
 
 while true; do
     read -p "Is it the first server you run this script on? Please answer with YES, or NO: " input
