@@ -6,4 +6,5 @@ rm -rf /var/www/html
 mkdir /var/www/html
 curl -L -o /var/www/html/index.html "https://raw.githubusercontent.com/mt-nix/nix-devops-workshop/main/aws/files/first/index.html"
 curl -L -o /var/www/html/surprise.gif "https://media.tenor.com/rI_0O_9AJ5sAAAAj/nyan-cat-poptart-cat.gif"
+curl -L -o /var/www/html/logo.svg "https://nixstech.com/wp-content/themes/cactuspress/assets/build/images/logo/logo-nix-tech-white.svg"
 systemctl restart nginx 
