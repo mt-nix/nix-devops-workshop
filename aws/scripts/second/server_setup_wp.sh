@@ -56,7 +56,7 @@ curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.pha
 chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
 
-sudo -u www-data -i -- wp core download --path /var/www/html
+sudo -u ubuntu -i -- wp core download --path /var/www/html
 
 while true; do
     read -p "Is it the first server you run this script on? Please answer with YES, or NO: " input
