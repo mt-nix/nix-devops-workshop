@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <style>
         body, html {
             height: 100%;
@@ -18,14 +19,47 @@
             font-size: 2em;
             font-weight: 300;
             background-color: #e60036;
-            color: #00a6eb;
+            color: #fff;
             user-select: none;
+            flex-direction: column;
         }
+
+        .congrats {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: min-content;
+        }
+
+        .undertext {
+            height: min-content;
+            font-size: 0.45em;
+            font-family: "Raleway", sans-serif;
+            font-weight: 400;
+            margin-top: 0.75em;
+        }
+
+        .nixlogo {
+            position: absolute;
+            bottom: 0%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
     </style>
 </head>
 <body>
+    <div class="congrats">
     	<img src="./surprise.gif" width="200">&nbsp;&nbsp;&nbsp;&nbsp;
     	Good job, it works!&nbsp;&nbsp;&nbsp;&nbsp;
-    	<img src="./surprise.gif" width="200">
+    	<img src="./surprise.gif" width="200"><br>
+    </div>
+    <div class="undertext">
+        Stay tuned - next time we're going to deploy a Wordpress site &#128526;
+    </div>
+    <div class="nixlogo">
+        <img src="./nixlogo.png" height="80px">
+    </div>
 </body>
 </html>
