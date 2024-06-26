@@ -23,7 +23,9 @@ first_server_setup() {
     su www-data
     cd /var/www/html
     wp core config --dbname="$dbendpoint" --dbuser="$dbusername" --dbpass="$dbpassword"
-    wp core install --url="$domain" --title="Test Wordpress Page" --admin_user="$wpusername" --admin_password="$wppassword" --admin_email="admin@example.com"
+    sudo -u ubuntu -i -- bash -c 'cd /var/www/html && \
+        wp core config --dbname="$dbendpoint" --dbuser="$dbusername" --dbpass="$dbpassword" && \
+        wp core install --url="$domain" --title="Test Wordpress Page" --admin_user="$wpusername" --admin_password="$wppassword" --admin_email="admin@example.com"'
 }
 
 second_server_setup() {
@@ -34,9 +36,8 @@ second_server_setup() {
     read -sp "Please enter your DB admin password: " dbpassword
     echo
 
-    su www-data
-    cd /var/www/html
-    wp core config --dbname="$dbendpoint" --dbuser="$dbusername" --dbpass="$dbpassword"
+    sudo -u ubuntu -i -- bash -c 'cd /var/www/html && \
+        wp core config --dbname="$dbendpoint" --dbuser="$dbusername" --dbpass="$dbpassword"'
 }
 
 mkdir /cert
