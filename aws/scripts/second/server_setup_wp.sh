@@ -20,9 +20,7 @@ first_server_setup() {
     read -sp "Please enter your Wordpress admin password: " wppassword
     echo "DEBUG: BEFORE USER SWITCH"
     
-    sudo -u ubuntu -i -- bash -c 'cd /var/www/html && echo "DEBUG: AFTER CD" && \
-        wp core config --dbname="$dbendpoint" --dbuser="$dbusername" --dbpass="$dbpassword" && echo "DEBUG: AFTER WP CORE CONFIG" && \
-        wp core install --url="$domain" --title="Test Wordpress Page" --admin_user="$wpusername" --admin_password="$wppassword" --admin_email="admin@example.com" && echo "DEBUG: AFTER WP CORE INSTALL"'
+    sudo -u ubuntu -i -- bash -c 'cd /var/www/html && echo "DEBUG: AFTER CD" && wp core config --dbname="$dbendpoint" --dbuser="$dbusername" --dbpass="$dbpassword" && echo "DEBUG: AFTER WP CORE CONFIG" && wp core install --url="$domain" --title="Test Wordpress Page" --admin_user="$wpusername" --admin_password="$wppassword" --admin_email="admin@example.com" && echo "DEBUG: AFTER WP CORE INSTALL"'
 }
 
 second_server_setup() {
@@ -33,8 +31,7 @@ second_server_setup() {
     read -sp "Please enter your DB admin password: " dbpassword
     echo
 
-    sudo -u ubuntu -i -- bash -c 'cd /var/www/html && \
-        wp core config --dbname="$dbendpoint" --dbuser="$dbusername" --dbpass="$dbpassword"'
+    sudo -u ubuntu -i -- bash -c 'cd /var/www/html && wp core config --dbname="$dbendpoint" --dbuser="$dbusername" --dbpass="$dbpassword"'
 }
 
 mkdir /cert
