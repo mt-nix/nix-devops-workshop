@@ -49,7 +49,7 @@ curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.pha
 chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
 cd /var/www/html
-wp core download
+wp core download --allow-root
 
 while true; do
     read -p "Is it the first server you run this script on? Please answer with YES, or NO: " input
