@@ -6,7 +6,7 @@ first_server_setup() {
 
 second_server_setup() {
     echo "Setting up the second web server..."
-    sudo su ubuntu -i -- bash -c './setup_second_server.sh'
+    sudo -u ubuntu -i -- bash -c './setup_second_server.sh'
 }
 
 mkdir /cert
