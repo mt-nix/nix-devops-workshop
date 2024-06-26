@@ -15,12 +15,15 @@ first_server_setup() {
     read -p "Please enter the DB endpoint: " dbendpoint
     read -p "Please enter your DB admin username: " dbusername
     read -sp "Please enter your DB admin password: " dbpassword
+    echo
     read -p "Please enter your Wordpress admin username: " wpusername
     read -sp "Please enter your Wordpress admin password: " wppassword
     echo
 
-    sudo -u ubuntu -i -- wp core config --dbname="$dbendpoint" --dbuser="$dbusername" --dbpass="$dbpassword"
-    sudo -u ubuntu -i -- wp core install --url="$domain" --title="Test Wordpress Page" --admin_user="$wpusername" --admin_password="$wppassword" --admin_email="admin@example.com"
+    su www-data
+    cd /var/www/html
+    wp core config --dbname="$dbendpoint" --dbuser="$dbusername" --dbpass="$dbpassword"
+    wp core install --url="$domain" --title="Test Wordpress Page" --admin_user="$wpusername" --admin_password="$wppassword" --admin_email="admin@example.com"
 }
 
 second_server_setup() {
@@ -29,7 +32,10 @@ second_server_setup() {
     read -p "Please enter the DB endpoint: " dbendpoint
     read -p "Please enter your DB admin username: " dbusername
     read -sp "Please enter your DB admin password: " dbpassword
+    echo
 
+    su www-data
+    cd /var/www/html
     wp core config --dbname="$dbendpoint" --dbuser="$dbusername" --dbpass="$dbpassword"
 }
 
@@ -48,8 +54,8 @@ apt install php-mysql -y
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar
 mv wp-cli.phar /usr/local/bin/wp
-cd /var/www/html
-sudo -u ubuntu -i -- wp core download
+
+sudo -u www-data -i -- wp core download --path /var/www/html
 
 while true; do
     read -p "Is it the first server you run this script on? Please answer with YES, or NO: " input
@@ -67,6 +73,6 @@ while true; do
     fi
 done
 
-chown www-data:www-data /var/www/html -R
-systemctl restart nginx
-systemctl restart php8.3-fpm
+sudo chown www-data:www-data /var/www/html -R
+sudo systemctl restart nginx
+sudo systemctl restart php8.3-fpm
