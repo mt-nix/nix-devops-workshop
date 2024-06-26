@@ -38,11 +38,16 @@ while true; do
 
     if [ "$input" == "YES" ]; then
         curl -L -o /home/ubuntu/setup_first_server.sh "https://raw.githubusercontent.com/mt-nix/nix-devops-workshop/main/aws/scripts/second/setup_first_server.sh"
-        first_server_setup
+        chown ubuntu:ubuntu /home/ubuntu/setup_first_server.sh
+	    chmod 744 /home/ubuntu/setup_first_server.sh
+	    first_server_setup
         break
     elif [ "$input" == "NO" ]; then
         curl -L -o /home/ubuntu/setup_second_server.sh "https://raw.githubusercontent.com/mt-nix/nix-devops-workshop/main/aws/scripts/second/setup_second_server.sh"
-        second_server_setup
+        chown ubuntu:ubuntu /home/ubuntu/setup_second_server.sh
+	    chmod 744 /home/ubuntu/setup_second_server.sh
+	    chown ubuntu:ubuntu /var/www/html
+	    second_server_setup
         break
     else
         echo "Please enter either YES or NO."
