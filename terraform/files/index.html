@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic HTML site</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Comfortaa", sans-serif;
+            font-size: 2em;
+            font-weight: 300;
+            background-color: #00a6eb;
+            color: #fff;
+            user-select: none;
+            flex-direction: column;
+        }
+
+        .congrats {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: min-content;
+        }
+
+        .nixlogo {
+            position: absolute;
+            bottom: 0%;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+    </style>
+</head>
+<body>
+    <div class="congrats">
+        <img src="./surprise.gif" alt="" height="160px">
+        <img src="./surprise.gif" alt="" height="160px">
+        <img src="./surprise.gif" alt="" height="160px">
+    	Good job, it works!
+        <img src="./surprise.gif" alt="" height="160px">
+        <img src="./surprise.gif" alt="" height="160px">
+        <img src="./surprise.gif" alt="" height="160px">
+    </div>
+    <div class="nixlogo">
+        <img src="./logo.svg" height="80px">
+    </div>
+</body>
+</html>
